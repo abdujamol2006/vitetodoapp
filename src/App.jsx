@@ -1,35 +1,74 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  createRoutesFromElements,
+} from "react-router-dom";
 import "./App.css";
-
+import Home from "./components/pages/Home";
+import About from "./components/pages/Home/About";
+import Todos from "./components/Todos";
+import First from "./components/All/T/P";
 function App() {
-  const [count, setCount] = useState(0);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<Home />}>
+          <Route path="/" element={<Todos />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/todos" element={<First />}></Route>
+        </Route>
+      </>
+    )
+  );
+  return <RouterProvider router={router} />;
+  /* const [data, setData] = useState(null);
+
+  const [navbar, setNavbar] = useState("Todos");
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/` + navbar)
+      .then((response) => response.json())
+      .then((result) => setData(result.slice(0, 20)));
+  }, [navbar]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <main>
+        <div className="container section-container">
+          <div>
+            <ul
+              className="list"
+              value={navbar}
+              onClick={(e) => {
+                setNavbar(e.target.value);
+              }}
+            >
+              <li value="todos">Todos</li>
+              <li value="posts">Posts</li>
+              <li value="comments">Comments</li>
+            </ul>
+          </div>
+          <h2 className="theme">{navbar}</h2>
+          <ul className="todoslist">
+            {data ? (
+              data.map((item) => {
+                return (
+                  <li key={item.id} className="todos-item">
+                    {item?.title ?? item?.name ?? item?.body}
+                  </li>
+                );
+              })
+            ) : (
+              <li>No data</li>
+            )}
+          </ul>
+        </div>
+      </main>
+      <Footer />
     </>
-  );
+  );*/
 }
 
 export default App;
