@@ -1,0 +1,10 @@
+.section {
+  padding-bottom: 50px;
+  padding-top: 50px;
+  background-image: linear-gradient(
+    to right,
+    #e0eafc 0%,
+    #cfdef3 51%,
+    #e0eafc 100%
+  );
+}

@@ -58,3 +58,20 @@ main {
   margin-top: 30px;
   font-size: 30px;
 }
+.headernav {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+header {
+  color: #fff;
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  padding: 25px 0;
+}
+footer {
+  color: #fff;
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  padding: 50px;
+}

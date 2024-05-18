@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-function Todos() {
-  const [todos, setTodos] = useState([]);
+function Posts() {
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
-      .then((data) => setTodos(data.slice(0, 20)))
+      .then((data) => setPosts(data.slice(0, 20)))
       .catch((error) => console.error(error));
   }, []);
 
   return (
     <main className="section">
       <div className="container">
-        <h1>TODOS</h1>
+        <h1>POSTS</h1>
         <ul>
-          {todos.map((todo) => (
-            <li className="card" key={todo.id}>
-              <li>{todo.id}</li> <li>{todo.title}</li>
+          {posts.map((post) => (
+            <li className="card" key={post.id}>
+              {post.title}
             </li>
           ))}
         </ul>
@@ -25,4 +25,4 @@ function Todos() {
     </main>
   );
 }
-export default Todos;
+export default Posts;

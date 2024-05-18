@@ -1,28 +1,47 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  createRoutesFromElements,
-} from "react-router-dom";
-import "./App.css";
-import Home from "./components/pages/Home";
-import About from "./components/pages/Home/About";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Todos from "./components/Todos";
-import First from "./components/All/T/P";
+import Posts from "./components/Posts";
+import Users from "./components/Users";
+import Photos from "./components/Photos";
+import "./App.css";
+
 function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path="/" element={<Home />}>
-          <Route path="/" element={<Todos />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/todos" element={<First />}></Route>
-        </Route>
-      </>
-    )
+  return (
+    <Router>
+      <header>
+        <div className="container">
+          <nav className="headernav">
+            <ul>
+              <li>
+                <Link to="/todos">TODOS</Link>
+              </li>
+              <li>
+                <Link to="/posts">POSTS</Link>
+              </li>
+              <li>
+                <Link to="/users">USERS</Link>
+              </li>
+              <li>
+                <Link to="/photos">PHOTOS</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <Routes>
+        <Route path="/todos" element={<Todos />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/photos" element={<Photos />} />
+      </Routes>
+      <footer></footer>
+    </Router>
   );
-  return <RouterProvider router={router} />;
-  /* const [data, setData] = useState(null);
+}
+
+export default App;
+/* const [data, setData] = useState(null);
 
   const [navbar, setNavbar] = useState("Todos");
 
@@ -69,6 +88,3 @@ function App() {
       <Footer />
     </>
   );*/
-}
-
-export default App;
